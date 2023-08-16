@@ -1,0 +1,35 @@
+create table Proveedor (
+	id_Proveedor serial Primary Key,
+	Nombre VARCHAR(100) NOT NULL,
+	Direccion VARCHAR(150) NOT NULL,
+	Provincia varchar(100) not null
+)
+
+create table Categoria (
+	id_Categoria serial Primary Key,
+	Nombre VARCHAR(50) NOT NULL
+	
+)
+
+create table Pieza (
+	id_Pieza serial Primary Key,
+	Nombre VARCHAR(150) NOT NULL,
+	Color VARCHAR(150) NOT NULL,
+	Precio INT NOT NULL,
+	id_Categoria int not null,
+	foreign key (id_Categoria) references Categoria(id_Categoria)
+	
+)
+
+create table Suministrar (
+	Fecha date NOT NULL,
+	Cantidad INT NOT NULL,
+	id_Proveedor int not null,
+	id_Pieza int not null,
+	foreign key (id_Proveedor) references Proveedor(id_Proveedor),
+	foreign key (id_Pieza) references Piezar(id_Pieza),
+	primary key(id_Proveedor, id_Pieza)
+
+	/*Composite Primary Key */
+	
+)
